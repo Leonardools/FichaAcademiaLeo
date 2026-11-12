@@ -25,3 +25,4 @@ Os treinos, séries, repetições, explicações e imagens ficam no array `worko
 
 ## Observação
 A ficha é uma referência geral e deve ser ajustada à condição física, experiência, recuperação e orientação de um profissional de Educação Física. Não substitui avaliação individual.
+boa
