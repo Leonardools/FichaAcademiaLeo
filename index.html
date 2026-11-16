@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101713">
+  <meta name="description" content="Sua ficha de treino: musculação, hipertrofia, emagrecimento e evolução.">
+  <title>Leonardo — Sua ficha de treino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Leonardo início"><span class="brand-mark">L</span><span>Leonardo<span class="brand-dot">.</span></span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#treinos">Treinos</a><a href="#metodo">Método</a><a href="#guia">Guia rápido</a>
+      </nav>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema">☼</button>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> SEU PLANO DE EVOLUÇÃO</div>
+          <h1>Treine com<br><em>intenção.</em></h1>
+          <p class="hero-text">Um plano organizado para desenvolver força, construir massa magra e reduzir gordura corporal — um treino de cada vez.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#treinos">Ver minha ficha <span>↘</span></a>
+            <a class="text-link" href="#metodo">Conhecer o método</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>05</strong><span>DIAS DE TREINO</span></div>
+            <div><strong>02</strong><span>GRUPOS POR DIA</span></div>
+            <div><strong>01</strong><span>OBJETIVO: EVOLUIR</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image"></div>
+          <div class="image-caption"><span class="caption-line"></span><span>CONSISTÊNCIA CONSTRÓI RESULTADOS</span></div>
+          <div class="floating-card"><span class="float-icon">↗</span><div><b>Seu próximo nível</b><small>Começa hoje.</small></div></div>
+        </div>
+      </section>
+
+      <section class="dashboard-strip" aria-label="Resumo do plano">
+        <div class="strip-item"><span class="strip-icon">◎</span><div><b>Hipertrofia</b><small>Estímulo muscular progressivo</small></div></div>
+        <div class="strip-item"><span class="strip-icon">↗</span><div><b>Emagrecimento</b><small>Musculação + cardio estratégico</small></div></div>
+        <div class="strip-item"><span class="strip-icon">◷</span><div><b>45–70 min</b><small>Duração média por sessão</small></div></div>
+      </section>
+
+      <section class="section workout-section" id="treinos">
+        <div class="section-heading">
+          <div><div class="eyebrow">01 / SUA ROTINA</div><h2>Escolha o treino.<br><em>Faça acontecer.</em></h2></div>
+          <p>Selecione um dia para abrir os exercícios, conferir as séries e acompanhar o que já concluiu.</p>
+        </div>
+        <div class="week-tabs" id="dayTabs" role="tablist" aria-label="Dias de treino"></div>
+        <div class="workout-overview" id="workoutOverview"></div>
+        <div class="progress-panel">
+          <div class="progress-copy"><div><span class="eyebrow">SEU PROGRESSO DE HOJE</span><b id="progressLabel">0 de 7 exercícios concluídos</b></div><strong id="progressPercent">0%</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+        <div class="exercise-toolbar">
+          <div><span class="eyebrow">FICHA DE EXERCÍCIOS</span><h3 id="exerciseHeading">Peito + Tríceps</h3></div>
+          <label class="search-box"><span>⌕</span><input id="exerciseSearch" type="search" placeholder="Buscar exercício..." aria-label="Buscar exercício"></label>
+        </div>
+        <div class="exercise-grid" id="exerciseGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>Nenhum exercício encontrado. Tente outro termo.</p>
+        <div class="session-actions">
+          <button class="button button-outline" id="resetDay" type="button">↺ Reiniciar este treino</button>
+          <button class="button button-primary" id="finishDay" type="button">Finalizar sessão <span>✓</span></button>
+        </div>
+      </section>
+
+      <section class="section method-section" id="metodo">
+        <div class="method-image"></div>
+        <div class="method-copy">
+          <div class="eyebrow">02 / O MÉTODO</div>
+          <h2>Não é sobre<br><em>fazer mais.</em><br>É fazer melhor.</h2>
+          <p>O foco é treinar com boa técnica, controlar a execução e aumentar o estímulo gradualmente. A combinação com alimentação adequada, sono e atividade aeróbica sustenta os resultados.</p>
+          <div class="method-points">
+            <div><span>01</span><p><b>Execução primeiro</b><small>Movimento controlado e amplitude confortável.</small></p></div>
+            <div><span>02</span><p><b>Progressão gradual</b><small>Aumente a carga quando dominar as repetições.</small></p></div>
+            <div><span>03</span><p><b>Recuperação conta</b><small>Respeite o descanso e evite treinar com dor.</small></p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section guide-section" id="guia">
+        <div class="section-heading">
+          <div><div class="eyebrow">03 / GUIA RÁPIDO</div><h2>Treino inteligente.<br><em>Resultado sustentável.</em></h2></div>
+          <p>Use estas referências como ponto de partida. Ajuste cargas e volume com orientação profissional e de acordo com sua recuperação.</p>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-card"><span class="guide-number">01</span><span class="guide-icon">↗</span><h3>Intensidade</h3><p>Finalize a maioria das séries sentindo que ainda conseguiria fazer cerca de 1 a 3 repetições com boa técnica.</p></article>
+          <article class="guide-card"><span class="guide-number">02</span><span class="guide-icon">◷</span><h3>Intervalo</h3><p>Descanse 60–90 segundos em exercícios isolados e 90–120 segundos nos movimentos mais exigentes.</p></article>
+          <article class="guide-card"><span class="guide-number">03</span><span class="guide-icon">⌁</span><h3>Cardio</h3><p>Comece com 15–25 minutos em intensidade moderada, conforme sua recuperação e rotina de corrida.</p></article>
+          <article class="guide-card"><span class="guide-number">04</span><span class="guide-icon">＋</span><h3>Alimentação</h3><p>Priorize proteína, alimentos variados e um déficit calórico moderado para preservar massa muscular.</p></article>
+        </div>
+        <div class="notice"><span>!</span><p><b>Importante:</b> esta é uma ficha geral, não uma avaliação individual. Se você está começando, tem lesões ou sente dor, procure um profissional de Educação Física. Interrompa o exercício se houver dor aguda, tontura ou mal-estar.</p></div>
+      </section>
+    </main>
+
+    <footer class="footer"><a class="brand" href="#inicio"><span class="brand-mark">L</span><span>Leonardo<span class="brand-dot">.</span></span></a><p>Constância no processo. Evolução no resultado.</p><a href="#inicio">Voltar ao topo ↑</a></footer>
+  </div>
+
+  <div class="modal-backdrop" id="exerciseModal" aria-hidden="true">
+    <section class="exercise-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Fechar">×</button>
+      <div class="modal-photo" id="modalPhoto"></div>
+      <div class="modal-content">
+        <div class="eyebrow" id="modalGroup">EXERCÍCIO</div>
+        <h2 id="modalTitle">Nome do exercício</h2>
+        <div class="modal-metrics" id="modalMetrics"></div>
+        <h3>Como executar</h3><p id="modalDescription"></p>
+        <div class="tip-box"><b>Dica de execução</b><p id="modalTip"></p></div>
+        <button class="button button-primary modal-done" id="modalDone" type="button">Marcar como concluído ✓</button>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
