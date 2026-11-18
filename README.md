@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FORGE — Plataforma de treinamento
 
 Plataforma responsiva feita com HTML, CSS e JavaScript puro, preparada para hospedagem estática no GitHub Pages.
@@ -27,3 +28,6 @@ As imagens de academia, corrida e ciclismo usam URLs do Unsplash; é necessária
 ## Segurança e responsabilidade esportiva
 
 Os treinos são referências gerais e não substituem avaliação de um profissional de Educação Física. Respeite seus limites, aqueça, hidrate-se e recupere-se. Interrompa o exercício em caso de dor ou sintomas preocupantes.
+=======
+# FichaAcademiaLeo
+>>>>>>> origin/main
