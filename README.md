@@ -1,28 +1,29 @@
-# FORGE — Ficha de treino
+# FORGE — Plataforma de treinamento
 
-Site responsivo, mobile-first, feito com HTML, CSS e JavaScript puro.
+Plataforma responsiva feita com HTML, CSS e JavaScript puro, preparada para hospedagem estática no GitHub Pages.
 
 ## Como executar
-1. Extraia o ZIP.
-2. Abra a pasta `fitprime-academia` no VS Code.
-3. Abra `index.html` no navegador. Para uma experiência melhor, use a extensão Live Server (opcional).
-4. Para publicar, envie todos os arquivos para um repositório GitHub e ative GitHub Pages usando a branch `main` e a pasta `/root`.
+
+Abra `index.html` no navegador. Para desenvolvimento, também é possível servir a pasta com qualquer servidor estático. Publique o conteúdo da pasta do projeto na raiz (`/`) da branch ou pasta configurada no GitHub Pages.
 
 ## Recursos
-- Ficha de 5 dias com dois grupos musculares por sessão.
-- Busca de exercícios.
-- Janela de detalhes com instruções e dicas de execução.
-- Marcação de exercícios concluídos, salva no navegador com localStorage.
-- Barra de progresso por treino.
-- Alternância entre tema escuro e claro.
-- Layout adaptado para celular, tablet e desktop.
 
-## Imagens
-As fotos são carregadas de URLs do Unsplash, então é necessária conexão com a internet para exibi-las. Elas são imagens ilustrativas de academia, não fotografias técnicas garantidas de cada movimento.
+- Ficha original de musculação em cinco dias, com busca, instruções, marcação de exercícios e progresso.
+- Planos gerais de ciclismo e corrida, com aquecimento, parte principal, desaquecimento e orientações.
+- Formulários de registro de pedais e corridas com cálculo de velocidade e pace.
+- Histórico com edição e exclusão de corridas e pedais, além de limpeza confirmada.
+- Painel com totais, gráfico semanal e filtro por modalidade e período.
+- Tema escuro/claro e navegação adaptada para celular.
+- Registros e preferências salvos no `localStorage` deste navegador; não há conta nem sincronização entre dispositivos.
 
 ## Personalização
-Os treinos, séries, repetições, explicações e imagens ficam no array `workouts` e no objeto `PHOTO`, no arquivo `js/script.js`.
 
-## Observação
-A ficha é uma referência geral e deve ser ajustada à condição física, experiência, recuperação e orientação de um profissional de Educação Física. Não substitui avaliação individual.
-boa
+Os exercícios, séries, repetições e instruções ficam no array `workouts` e no objeto `PHOTO`, em `js/script.js`. Os planos de ciclismo e corrida também ficam organizados nesse arquivo.
+
+## Imagens e conexão
+
+As imagens de academia, corrida e ciclismo usam URLs do Unsplash; é necessária conexão com a internet para carregar essas fotografias. Os arquivos locais de CSS e JavaScript usam caminhos relativos.
+
+## Segurança e responsabilidade esportiva
+
+Os treinos são referências gerais e não substituem avaliação de um profissional de Educação Física. Respeite seus limites, aqueça, hidrate-se e recupere-se. Interrompa o exercício em caso de dor ou sintomas preocupantes.
