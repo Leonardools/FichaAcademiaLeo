@@ -3,7 +3,7 @@ const PHOTO = {
   incline:"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80",
   chest:"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80",
   cable:"Imagem/Tríceps pulley.jpg",
-  CrossoverNaPolia: "Imagem/Crossover na polia.jpg",
+  CrossoverNaPolia: "Imagem/Tríceps pulley.jpg",
   back:"https://images.unsplash.com/photo-1603287681836-b174ce5074c2?auto=format&fit=crop&w=900&q=80",
   row:"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80",
   curl:"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80",
@@ -30,7 +30,6 @@ const workouts = [
   ["Remada baixa","Costas",3,"10–12","90 s","row","Sente-se com a coluna neutra. Puxe o pegador em direção ao abdômen aproximando as escápulas e retorne sem arredondar as costas.","Não transforme a remada em balanço do tronco."],
   ["Remada unilateral com halter","Costas",3,"10–12 cada lado","60–90 s","row","Apoie uma mão e um joelho no banco. Puxe o halter em direção ao quadril e desça até alongar o braço.","Mantenha o tronco estável e evite girar o corpo."],
   ["Remada articulada","Costas",3,"10–12","90 s","back","Ajuste o banco e apoie o peito quando houver suporte. Puxe as alças até os cotovelos passarem levemente pelo tronco.","Priorize a contração das costas, sem encolher os ombros."],
-  ["Rosca direta","Bíceps",3,"10–12","60 s","curl","Segure a barra com as palmas para frente. Flexione os cotovelos até aproximar a barra do peito e desça devagar.","Mantenha os cotovelos próximos ao corpo."]
   ["Rosca direta","Bíceps",3,"10–12","60 s","curl","Segure a barra com as palmas para frente. Flexione os cotovelos até aproximar a barra do peito e desça devagar.","Mantenha os cotovelos próximos ao corpo."],
   ["Rosca alternada","Bíceps",3,"10–12","60 s","curl","Com um halter em cada mão, flexione um braço de cada vez, girando a palma para cima durante a subida.","Evite jogar o ombro para frente ou balançar o tronco."],
   ["Rosca martelo","Bíceps",2,"12","60 s","curl","Segure os halteres com as palmas voltadas uma para a outra. Flexione os cotovelos e retorne lentamente.","Mantenha os punhos neutros durante todo o movimento."]
@@ -65,7 +64,7 @@ const workouts = [
 const $ = (s, root=document) => root.querySelector(s);
 const dayTabs=$("#dayTabs"), overview=$("#workoutOverview"), grid=$("#exerciseGrid");
 let activeDay=0, currentExercise=null;
-const doneState=JSON.parse(localStorage.getItem("forgeDone")||"{}");
+let doneState={};try{doneState=JSON.parse(localStorage.getItem("forgeDone")||"{}")||{}}catch{doneState={}}
 const keyFor=(day,index)=>`${day}-${index}`;
 function renderTabs(){
  dayTabs.innerHTML=workouts.map((w,i)=>`<button class="day-tab ${i===activeDay?"active":""}" role="tab" aria-selected="${i===activeDay}" data-day="${i}"><span>${w.day}</span><b>${w.label}</b></button>`).join("");
@@ -109,7 +108,8 @@ function openModal(index){
  $("#modalGroup").textContent=item[1].toUpperCase();
  $("#modalTitle").textContent=item[0];
  $("#modalMetrics").innerHTML=[`${item[2]} séries`,`${item[3]} repetições`,`Descanso: ${item[4]}`].map(x=>`<span>${x}</span>`).join("");
- $("#modalDescription").textContent=item[6];$("#modalTip").textContent=item[7];
+$("#modalDescription").textContent=item[6];$("#modalTip").textContent=item[7];
+if($("#modalCare"))$("#modalCare").textContent="Use carga controlável e amplitude confortável. Interrompa o exercício se houver dor aguda, tontura ou mal-estar; retome somente quando estiver bem.";
  $("#modalDone").textContent=doneState[keyFor(activeDay,index)]?"Concluído ✓":"Marcar como concluído ✓";
  $("#exerciseModal").classList.add("open");$("#exerciseModal").setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
 }
@@ -117,7 +117,7 @@ function closeModal(){$("#exerciseModal").classList.remove("open");$("#exerciseM
 function toast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove("show"),2600)}
 $("#exerciseSearch").addEventListener("input",renderExercises);
 $("#resetDay").addEventListener("click",()=>{workouts[activeDay].items.forEach((_,i)=>delete doneState[keyFor(activeDay,i)]);saveDone();renderExercises();toast("Progresso deste treino reiniciado.")});
-$("#finishDay").addEventListener("click",()=>{const total=workouts[activeDay].items.length;const count=workouts[activeDay].items.filter((_,i)=>doneState[keyFor(activeDay,i)]).length;toast(count===total?"Sessão concluída! Excelente trabalho.":`Você concluiu ${count} de ${total}. Continue no seu ritmo!`)});
+$("#finishDay").addEventListener("click",()=>{const total=workouts[activeDay].items.length;const count=workouts[activeDay].items.filter((_,i)=>doneState[keyFor(activeDay,i)]).length;if(count===total){saveActivity({sport:"strength",date:today(),title:workouts[activeDay].title,minutes:60,day:activeDay});toast("Sessão concluída e registrada.")}else toast("Você concluiu "+count+" de "+total+". Continue no seu ritmo!")});
 $("#modalClose").addEventListener("click",closeModal);
 $("#exerciseModal").addEventListener("click",e=>{if(e.target===$("#exerciseModal"))closeModal()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
@@ -125,3 +125,26 @@ $("#modalDone").addEventListener("click",()=>{if(currentExercise===null)return;d
 $("#themeToggle").addEventListener("click",()=>{document.body.classList.toggle("light");localStorage.setItem("forgeTheme",document.body.classList.contains("light")?"light":"dark")});
 if(localStorage.getItem("forgeTheme")==="light")document.body.classList.add("light");
 renderAll();
+
+const ACTIVITY_KEY="forgeActivities";
+function today(){return new Date().toISOString().slice(0,10)}
+function readActivities(){try{return JSON.parse(localStorage.getItem(ACTIVITY_KEY)||"[]")}catch(e){return []}}
+let activities=readActivities();
+function persist(){localStorage.setItem(ACTIVITY_KEY,JSON.stringify(activities));renderDashboard()}
+function saveActivity(entry){const at=activities.findIndex(a=>a.sport==="strength"&&a.date===entry.date&&a.day===entry.day);if(at>=0)activities[at]=Object.assign({},activities[at],entry);else activities.unshift(Object.assign({id:String(Date.now())},entry));persist()}
+function pace(km,mins){const p=Math.round(mins/km);return Math.floor(p/60)+":"+String(p%60).padStart(2,"0")+" / km"}
+function setup(formId,sport){const form=$(formId);const recalc=()=>{const km=Number(form.elements.distance.value),mins=sport==="bike"?Number(form.elements.minutes.value):Number(form.elements.hours.value)*60+Number(form.elements.minutes.value);if(km>0&&mins>0){if(sport==="bike")form.elements.speed.value=(km/(mins/60)).toFixed(1);else{form.elements.pace.value=pace(km,mins);form.elements.speed.value=(km/(mins/60)).toFixed(1)+" km/h"}}};["distance","minutes","hours"].forEach(k=>{if(form.elements[k])form.elements[k].addEventListener("input",recalc)});form.addEventListener("submit",e=>{e.preventDefault();if(!form.reportValidity())return;const d=new FormData(form),km=Number(d.get("distance")),mins=sport==="bike"?Number(d.get("minutes")):Number(d.get("hours"))*60+Number(d.get("minutes"));if(!Number.isFinite(km)||km<=0||!Number.isFinite(mins)||mins<=0){toast("Informe distância e tempo válidos.");return}const old=activities.findIndex(a=>a.id===d.get("id"));const a={id:d.get("id")||String(Date.now()),sport,date:d.get("date"),distance:km,minutes:mins,type:d.get("type"),notes:d.get("notes").trim(),speed:(km/(mins/60)).toFixed(1),pace:sport==="run"?pace(km,mins):""};if(old>=0)activities[old]=a;else activities.unshift(a);persist();form.reset();form.elements.id.value="";toast("Atividade salva no histórico.")})}
+setup("#bikeForm","bike");setup("#runForm","run");
+const bikePlans=[["Iniciantes","Criar hábito com conforto","12–20 km","45–75 min","leve","18–22 km/h","10 min leves","30–50 min contínuos","5 min leves"],["Resistência","Sustentar ritmo constante","25–45 km","1h15–2h30","leve/moderada","20–26 km/h","15 min progressivos","45–120 min estáveis","10 min leves"],["Velocidade","Mudanças controladas de ritmo","18–30 km","60–100 min","moderada/alta","22–30 km/h","15 min leves","6 × 2 min firme, 3 min leve","10 min leves"],["Subida","Força específica em aclives","15–30 km","60–120 min","moderada","18–25 km/h","15 min leves","4–6 subidas controladas","10 min leves"],["Recuperação","Pedalar leve entre sessões","10–18 km","35–60 min","muito leve","16–21 km/h","10 min fáceis","20–35 min leves","5 min fáceis"],["Longa distância","Praticar resistência","40–80 km","2–4 h","leve","20–26 km/h","15 min leves","Pedal contínuo com pausas","10 min leves"]];
+const runPlans=[["Iniciantes · 5 km","Construir consistência","3–5 km","25–45 min","7:00–9:00/km","leve"],["Intermediário · 10 km","Desenvolver base aeróbica","5–8 km","35–65 min","5:45–7:00/km","leve/moderada"],["Avançado · 15 km","Ritmo progressivo controlado","7–12 km","40–85 min","4:45–6:00/km","moderada"],["Intervalado · 5 a 10 km","Mudanças de ritmo","4–7 km","35–60 min","variável","moderada/alta"],["Resistência · até 21 km","Sustentar ritmo conversável","8–14 km","50–100 min","confortável","leve/moderada"],["Longão · até 21 km","Preparar provas longas","10–18 km","65–150 min","confortável","leve"],["Recuperação","Facilitar retorno","3–6 km","20–45 min","conversa fácil","muito leve"]];
+function renderPlanCards(id,rows,bike){$(id).innerHTML=rows.map((p,i)=>"<article class='plan-card'><span class='plan-index'>"+String(i+1).padStart(2,"0")+"</span><h3>"+p[0]+"</h3><p>"+p[1]+"</p><div class='plan-metrics'><span><b>Distância</b>"+p[2]+"</span><span><b>Duração</b>"+p[3]+"</span><span><b>Intensidade</b>"+p[bike?4:5]+"</span><span><b>"+(bike?"Velocidade":"Pace")+"</b>"+p[bike?5:4]+"</span></div><details><summary>Orientações do treino</summary><p>Aquecimento: "+(bike?p[6]:"10 min leves + mobilidade")+"<br>Parte principal: "+(bike?p[7]:p[0])+"<br>Desaquecimento: "+(bike?p[8]:"5–10 min leves")+"<br>Hidratação: ajuste à duração, ao clima e à sede. Interrompa se sentir dor ou mal-estar.</p></details></article>").join("")}
+renderPlanCards("#bikePlans",bikePlans,true);renderPlanCards("#runPlans",runPlans,false);
+function inPeriod(date,period){const d=new Date(date+"T12:00:00"),n=new Date();if(period==="month")return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear();if(period==="week"){const ago=new Date();ago.setDate(n.getDate()-6);return d>=ago&&d<=n}return true}
+function escapeText(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+function renderDashboard(){if(!$("#dashboardStats"))return;const sport=$("#filterSport").value,period=$("#filterPeriod").value,shown=activities.filter(a=>(sport==="all"||sport===a.sport)&&inPeriod(a.date,period)),runs=activities.filter(a=>a.sport==="run"),bikes=activities.filter(a=>a.sport==="bike"),sum=a=>a.reduce((n,x)=>n+(Number(x.distance)||0),0);const allMinutes=activities.reduce((n,a)=>n+(Number(a.minutes)||0),0);$("#dashboardStats").innerHTML=[[activities.length,"Atividades realizadas"],[sum(runs).toFixed(1)+" km","Corrida acumulada"],[sum(bikes).toFixed(1)+" km","Ciclismo acumulado"],[Math.floor(allMinutes/60)+" h","Tempo total"],[activities.filter(a=>a.sport==="strength").length,"Treinos de musculação" ]].map(x=>"<article class='stat-card'><strong>"+x[0]+"</strong><span>"+x[1]+"</span></article>").join("");const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const iso=d.toISOString().slice(0,10),km=shown.filter(a=>a.date===iso).reduce((n,a)=>n+(Number(a.distance)||0),0);days.push({label:d.toLocaleDateString("pt-BR",{weekday:"short"}),km})}const max=Math.max(1,...days.map(x=>x.km));$("#activityChart").innerHTML=days.map(x=>"<div class='chart-day'><span>"+(x.km?x.km.toFixed(1):"")+"</span><i style='height:"+Math.max(4,x.km/max*100)+"%'></i><small>"+x.label+"</small></div>").join("");$("#activityHistory").innerHTML=activities.length?activities.map(a=>"<article class='history-item'><div><b>"+({run:"Corrida",bike:"Ciclismo",strength:"Musculação"}[a.sport])+(a.title?" · "+a.title:"")+"</b><span>"+new Date(a.date+"T12:00:00").toLocaleDateString("pt-BR")+" · "+(a.type||"Treino")+(a.distance?" · "+a.distance+" km":"")+(a.minutes?" · "+Math.floor(a.minutes/60)+"h "+a.minutes%60+"min":"")+(a.pace?" · "+a.pace:"")+"</span><small>"+escapeText(a.notes||"")+"</small></div><div><button data-edit='"+a.id+"' "+(a.sport==="strength"?"disabled":"")+">Editar</button> <button data-delete='"+a.id+"'>Excluir</button></div></article>").join(""):"<p class='empty-state'>Nenhuma atividade registrada ainda.</p>";$("#runTotals").innerHTML="<span>Semana: <b>"+sum(runs.filter(a=>inPeriod(a.date,"week"))).toFixed(1)+" km</b></span><span>Mês: <b>"+sum(runs.filter(a=>inPeriod(a.date,"month"))).toFixed(1)+" km</b></span>";$("#activityHistory").querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{if(confirm("Excluir este registro?")){activities=activities.filter(a=>a.id!==b.dataset.delete);persist()}})}
+function editActivity(id){const a=activities.find(x=>x.id===id);if(!a||a.sport==="strength")return;const f=a.sport==="bike"?bikeForm:runForm;f.elements.id.value=a.id;f.elements.date.value=a.date;f.elements.distance.value=a.distance;f.elements.type.value=a.type;f.elements.notes.value=a.notes;if(a.sport==="bike")f.elements.minutes.value=a.minutes;else{f.elements.hours.value=Math.floor(a.minutes/60);f.elements.minutes.value=a.minutes%60}f.elements.distance.dispatchEvent(new Event("input"));f.querySelector(".cancel-edit").hidden=false;document.getElementById(a.sport==="bike"?"ciclismo":"corrida").scrollIntoView({behavior:"smooth"})}
+$("#activityHistory").addEventListener("click",e=>{if(e.target.matches("[data-edit]"))editActivity(e.target.dataset.edit)});
+document.querySelectorAll(".cancel-edit").forEach(b=>b.addEventListener("click",()=>{const f=b.closest("form");f.reset();f.elements.id.value="";b.hidden=true}));
+$("#clearRecords").addEventListener("click",()=>{if(activities.length&&confirm("Apagar todo o histórico salvo neste navegador?")){activities=[];persist();toast("Histórico limpo.")}});
+["#filterSport","#filterPeriod"].forEach(s=>$(s).addEventListener("change",renderDashboard));
+renderDashboard();

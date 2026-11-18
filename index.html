@@ -17,7 +17,7 @@
     <header class="topbar">
       <a class="brand" href="#inicio" aria-label="Leonardo início"><span class="brand-mark">L</span><span>Leonardo<span class="brand-dot">.</span></span></a>
       <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#treinos">Treinos</a><a href="#metodo">Método</a><a href="#guia">Guia rápido</a>
+        <a href="#painel">Painel</a><a href="#treinos">Musculação</a><a href="#ciclismo">Ciclismo</a><a href="#corrida">Corrida</a><a href="#guia">Guia</a>
       </nav>
       <button class="icon-button" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema">☼</button>
     </header>
@@ -51,6 +51,14 @@
         <div class="strip-item"><span class="strip-icon">◷</span><div><b>45–70 min</b><small>Duração média por sessão</small></div></div>
       </section>
 
+      <section class="section tracking-section" id="painel">
+        <div class="section-heading"><div><div class="eyebrow">00 / SEU DESEMPENHO</div><h2>Seu movimento.<br><em>Sua evolução.</em></h2></div><p>Resumo dos registros guardados neste navegador. Seus dados não são sincronizados entre dispositivos.</p></div>
+        <div class="stats-grid" id="dashboardStats"></div>
+        <div class="panel-row"><label>Modalidade <select id="filterSport"><option value="all">Todas</option><option value="run">Corrida</option><option value="bike">Ciclismo</option><option value="strength">Musculação</option></select></label><label>Período <select id="filterPeriod"><option value="week">Últimos 7 dias</option><option value="month">Este mês</option><option value="all">Todo o histórico</option></select></label></div>
+        <div class="chart-panel"><div><span class="eyebrow">DISTÂNCIA POR DIA</span><h3>Atividade recente</h3></div><div class="chart-bars" id="activityChart" role="img" aria-label="Gráfico de distância por dia"></div></div>
+        <div class="history-head"><div><span class="eyebrow">REGISTROS SALVOS</span><h3>Histórico de atividades</h3></div><button class="button button-outline" id="clearRecords" type="button">Limpar histórico</button></div><div id="activityHistory" class="history-list"></div>
+      </section>
+
       <section class="section workout-section" id="treinos">
         <div class="section-heading">
           <div><div class="eyebrow">01 / SUA ROTINA</div><h2>Escolha o treino.<br><em>Faça acontecer.</em></h2></div>
@@ -72,6 +80,18 @@
           <button class="button button-outline" id="resetDay" type="button">↺ Reiniciar este treino</button>
           <button class="button button-primary" id="finishDay" type="button">Finalizar sessão <span>✓</span></button>
         </div>
+      </section>
+
+      <section class="section sport-section" id="ciclismo">
+        <div class="sport-hero bike-hero"><div><div class="eyebrow">02 / CICLISMO DE ESTRADA</div><h2>Encontre seu<br><em>ritmo na estrada.</em></h2><p>Planos gerais para pedalar com consistência, segurança e recuperação.</p></div></div>
+        <div class="section-heading"><div><div class="eyebrow">PLANOS DE PEDAL</div><h2>Treinos para cada<br><em>objetivo.</em></h2></div><p>Escolha uma sessão e ajuste o esforço à sua experiência e às condições do percurso.</p></div><div class="plan-grid" id="bikePlans"></div>
+        <div class="activity-form-panel"><div><span class="eyebrow">REGISTRAR PEDAL</span><h3>Seu pedal de hoje</h3></div><form id="bikeForm" class="activity-form"><input type="hidden" name="id"><label>Data<input name="date" type="date" required></label><label>Distância (km)<input name="distance" type="number" min="0.1" step="0.1" required></label><label>Tempo (min)<input name="minutes" type="number" min="1" step="1" required></label><label>Velocidade média<input name="speed" type="number" readonly placeholder="Calculada automaticamente"></label><label>Tipo de percurso<select name="type" required><option value="">Selecione</option><option>Plano</option><option>Ondulado</option><option>Montanha</option><option>Misto</option></select></label><label class="wide-field">Observações<textarea name="notes" rows="2" maxlength="500"></textarea></label><button class="button button-primary" type="submit">Salvar pedal <span>＋</span></button><button class="button button-outline cancel-edit" type="button" hidden>Cancelar edição</button></form></div>
+      </section>
+
+      <section class="section sport-section" id="corrida">
+        <div class="sport-hero run-hero"><div><div class="eyebrow">03 / CORRIDA DE RUA</div><h2>Um passo de cada vez.<br><em>Vá mais longe.</em></h2><p>Treinos para diferentes ritmos e distâncias, dos primeiros quilômetros à meia maratona.</p></div></div>
+        <div class="distance-chips"><span>Planos gerais</span><b>5 km</b><b>10 km</b><b>15 km</b><b>21 km</b></div><div class="plan-grid" id="runPlans"></div>
+        <div class="activity-form-panel"><div><span class="eyebrow">REGISTRAR CORRIDA</span><h3>Uma corrida concluída</h3></div><form id="runForm" class="activity-form"><input type="hidden" name="id"><label>Data<input name="date" type="date" required></label><label>Distância (km)<input name="distance" type="number" min="0.1" step="0.1" required></label><label>Horas<input name="hours" type="number" min="0" step="1" value="0" required></label><label>Minutos<input name="minutes" type="number" min="0" max="59" step="1" value="30" required></label><label>Pace médio / km<input name="pace" type="text" readonly placeholder="Calculado automaticamente"></label><label>Velocidade média<input name="speed" type="text" readonly placeholder="Calculada automaticamente"></label><label>Tipo de treino<select name="type" required><option value="">Selecione</option><option>Leve</option><option>Intervalado</option><option>Velocidade</option><option>Resistência</option><option>Longão</option><option>Recuperação</option><option>Prova</option></select></label><label class="wide-field">Observações<textarea name="notes" rows="2" maxlength="500"></textarea></label><button class="button button-primary" type="submit">Salvar corrida <span>＋</span></button><button class="button button-outline cancel-edit" type="button" hidden>Cancelar edição</button></form><div class="run-totals" id="runTotals"></div></div>
       </section>
 
       <section class="section method-section" id="metodo">
@@ -115,7 +135,8 @@
         <h2 id="modalTitle">Nome do exercício</h2>
         <div class="modal-metrics" id="modalMetrics"></div>
         <h3>Como executar</h3><p id="modalDescription"></p>
-        <div class="tip-box"><b>Dica de execução</b><p id="modalTip"></p></div>
+        <div class="tip-box"><b>O que evitar</b><p id="modalTip"></p></div>
+        <div class="tip-box care-box"><b>Cuidados importantes</b><p id="modalCare">Use carga controlável e amplitude confortável. Interrompa se sentir dor ou mal-estar.</p></div>
         <button class="button button-primary modal-done" id="modalDone" type="button">Marcar como concluído ✓</button>
       </div>
     </section>
