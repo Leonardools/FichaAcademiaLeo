@@ -9,8 +9,10 @@ const PHOTO = {
   curl:"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80",
   squat:"https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=80",
   legs:"https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=80",
-  shoulder:"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80",
-  abs:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80",
+  shoulder:"Imagem/Crucifixo inverso.png",
+  CrucifixoInverso:"Imagem/Crucifixo inverso.png",
+  elevaçãolateral:"Imagem/lateral.png",
+  abs:"Imagem/abdominal.png",
   glute:"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"
 };
 
@@ -45,7 +47,7 @@ const workouts = [
  {day:"QUI",label:"Quinta",title:"Ombros + Abdômen",subtitle:"Estabilidade, desenvolvimento dos ombros e fortalecimento do core.",groups:["OMBROS","ABDÔMEN"],items:[
   ["Desenvolvimento com halteres","Ombros",3,"8–12","90 s","shoulder","Sentado ou em pé, posicione os halteres na altura dos ombros. Empurre para cima e desça até a posição inicial.","Evite arquear excessivamente a lombar."],
   ["Elevação lateral","Ombros",3,"12–15","60 s","shoulder","Com halteres ao lado do corpo, eleve os braços lateralmente até próximo à altura dos ombros e desça devagar.","Use pouco peso e não balance o tronco."],
-  ["Crucifixo inverso","Ombros",3,"12–15","60 s","shoulder","Na máquina ou inclinado com halteres, abra os braços para os lados levando as mãos para trás, sem encolher os ombros.","Concentre o movimento na parte posterior dos ombros."],
+  ["Crucifixo inverso","Ombros",3,"12–15","60 s","CrucifixoInverso","Na máquina ou inclinado com halteres, abra os braços para os lados levando as mãos para trás, sem encolher os ombros.","Concentre o movimento na parte posterior dos ombros."],
   ["Face pull na polia","Ombros",2,"12–15","60 s","cable","Com a corda na altura do rosto, puxe em direção à testa separando as mãos e mantendo os cotovelos elevados.","Use carga leve e controle a rotação dos ombros."],
   ["Abdominal na polia","Abdômen",3,"12–15","60 s","abs","Ajoelhe-se diante da polia, segure a corda e flexione o tronco aproximando as costelas da pelve.","O movimento vem do abdômen, não de puxar com os braços."],
   ["Elevação de pernas","Abdômen",3,"10–12","60 s","abs","Deitado, mantenha o abdômen contraído e eleve as pernas sem tirar a lombar do controle. Desça lentamente.","Dobre os joelhos para facilitar se necessário."],
@@ -55,7 +57,7 @@ const workouts = [
   ["Mesa flexora","Posterior de coxa",3,"10–12","60–90 s","legs","Deite na máquina com o eixo alinhado ao joelho. Flexione os joelhos levando o apoio em direção aos glúteos e retorne devagar.","Evite tirar o quadril do banco."],
   ["Stiff com halteres","Posterior de coxa",3,"10–12","90 s","glute","Segure os halteres à frente das coxas. Leve o quadril para trás com joelhos levemente flexionados e desça mantendo a coluna neutra.","Desça até sentir alongar a parte posterior sem arredondar as costas."],
   ["Cadeira flexora","Posterior de coxa",2,"12–15","60 s","legs","Ajuste os apoios e flexione os joelhos contra a resistência. Retorne lentamente.","Não deixe a carga despencar na volta."],
-  ["Elevação pélvica","Glúteos",3,"8–12","90 s","glute","Apoie a parte superior das costas no banco, pés firmes no chão. Eleve o quadril até alinhar tronco e coxas e desça controlando.","Finalize contraindo os glúteos, sem hiperestender a lombar."],
+  ["Elevação pélvica","Glúteos",3,"8–12","90 s","glute","Apoie a parte superior das costas no banco, pés firmes no chão. Eleve o quadril até alinhar tronco e coxas e desça controlando.","Finalize contraindo os glúteos, sem hiperestender a lombar."]
   ["Cadeira abdutora","Glúteos",3,"12–15","60 s","glute","Sente-se com as pernas apoiadas e abra os joelhos contra a resistência. Retorne devagar.","Evite usar impulso e mantenha o tronco estável."],
   ["Coice na polia","Glúteos",2,"12 cada perna","60 s","glute","Com o tornozelo preso à polia, leve a perna para trás sem girar o quadril e retorne lentamente.","Use amplitude controlada, sem arquear a lombar."]
  ]}
