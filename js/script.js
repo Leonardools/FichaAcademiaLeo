@@ -2,7 +2,7 @@ const PHOTO = {
   bench:"https://images.unsplash.com/photo-1534368270820-9de3d8053204?auto=format&fit=crop&w=900&q=80",
   incline:"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80",
   chest:"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80",
-  cable:"Imagem/Tríceps pulley.jpg",
+ 
   CrossoverNaPolia: "Imagem/Tríceps pulley.jpg",
   back:"https://images.unsplash.com/photo-1603287681836-b174ce5074c2?auto=format&fit=crop&w=900&q=80",
   row:"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80",
@@ -13,25 +13,33 @@ const PHOTO = {
   CrucifixoInverso:"Imagem/Crucifixo inverso.png",
   elevaçãolateral:"Imagem/lateral.png",
   abs:"Imagem/abdominal.png",
+  
+  // segunda-feira
+  SIH: "Imagem/supino inclinado.png",
+  supinoreto: "Imagem/supino reto.png",
+  crucifico:"Imagem/Crucifixo na máquina.png",
+  Tricepscorda:"Imagem/Tríceps pulley.jpg",
+
+  // terça-feira
   glute:"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"
 };
 
 const workouts = [
  {day:"SEG",label:"Segunda",title:"Peito + Tríceps",subtitle:"Movimentos de empurrar: desenvolva peitoral e tríceps.",groups:["PEITO","TRÍCEPS"],items:[
-  ["Supino reto","Peito",4,"8–12","90–120 s","bench","Deite no banco, mantenha os pés firmes no chão e segure a barra um pouco além da largura dos ombros. Desça controlando até próximo ao peito e empurre sem tirar os ombros do banco.","Mantenha as escápulas apoiadas e evite quicar a barra no peito."],
-  ["Supino inclinado com halteres","Peito",3,"10–12","90 s","incline","Ajuste o banco entre 30° e 45°. Com os halteres alinhados ao peito, desça até uma amplitude confortável e empurre para cima.","Não deixe os halteres baterem no topo; controle a descida."],
-  ["Crucifixo na máquina","Peito",3,"12–15","60–90 s","chest","Ajuste o banco para que os cotovelos fiquem na linha do peito. Feche os braços à frente e retorne lentamente.","Use carga moderada e mantenha uma leve flexão nos cotovelos."],
+  ["Supino reto","Peito",4,"8–12","90–120 s","supinoreto","Deite no banco, mantenha os pés firmes no chão e segure a barra um pouco além da largura dos ombros. Desça controlando até próximo ao peito e empurre sem tirar os ombros do banco.","Mantenha as escápulas apoiadas e evite quicar a barra no peito."],
+  ["Supino inclinado com halteres","Peito",3,"10–12","90 s","SIH","Ajuste o banco entre 30° e 45°. Com os halteres alinhados ao peito, desça até uma amplitude confortável e empurre para cima.","Não deixe os halteres baterem no topo; controle a descida."],
+  ["Crucifixo na máquina","Peito",3,"12–15","60–90 s","crucifico","Ajuste o banco para que os cotovelos fiquem na linha do peito. Feche os braços à frente e retorne lentamente.","Use carga moderada e mantenha uma leve flexão nos cotovelos."] 
   ["Crossover na polia","Peito",3,"12–15","60 s","CrossoverNaPolia","Com uma perna à frente, segure as alças e traga as mãos em arco à frente do tronco. Retorne sem perder o controle.","Evite usar o impulso do corpo para fechar as mãos."],
-  ["Crossover na polia","Peito",3,"12–15","60 s","cable","Com uma perna à frente, segure as alças e traga as mãos em arco à frente do tronco. Retorne sem perder o controle.","Evite usar o impulso do corpo para fechar as mãos."],
-  ["Tríceps pulley","Tríceps",3,"10–12","60 s","cable","Com os cotovelos junto ao corpo, empurre a barra para baixo até estender os braços. Retorne sem movimentar os ombros.","Mantenha os cotovelos fixos ao lado do tronco."],
-  ["Tríceps francês","Tríceps",3,"10–12","60 s","curl","Segure um halter acima da cabeça, flexione os cotovelos levando o peso atrás da cabeça e estenda novamente.","Não abra excessivamente os cotovelos; use carga controlável."],
-  ["Tríceps corda","Tríceps",2,"12–15","60 s","cable","Empurre a corda para baixo e, no final, afaste levemente as pontas. Volte devagar até os cotovelos flexionarem.","Não balance o tronco para completar as repetições."]
+  ["Crossover na polia","Peito",3,"12–15","60 s","Tricepscorda","Com uma perna à frente, segure as alças e traga as mãos em arco à frente do tronco. Retorne sem perder o controle.","Evite usar o impulso do corpo para fechar as mãos."],
+  ["Tríceps pulley","Tríceps",3,"10–12","60 s","Tricepscorda","Com os cotovelos junto ao corpo, empurre a barra para baixo até estender os braços. Retorne sem movimentar os ombros.","Mantenha os cotovelos fixos ao lado do tronco."]
+  ["Tríceps francês","Tríceps",3,"10–12","60 s","Tricepscorda","Segure um halter acima da cabeça, flexione os cotovelos levando o peso atrás da cabeça e estenda novamente.","Não abra excessivamente os cotovelos; use carga controlável."]
+  ["Tríceps corda","Tríceps",2,"12–15","60 s","Tricepscorda","Empurre a corda para baixo e, no final, afaste levemente as pontas. Volte devagar até os cotovelos flexionarem.","Não balance o tronco para completar as repetições."]
  ]},
  {day:"TER",label:"Terça",title:"Costas + Bíceps",subtitle:"Puxadas e remadas para costas fortes e braços.",groups:["COSTAS","BÍCEPS"],items:[
   ["Puxada frontal","Costas",4,"8–12","90 s","back","Sente-se com as coxas apoiadas. Puxe a barra em direção à parte superior do peito, conduzindo os cotovelos para baixo, e retorne controlando.","Evite puxar a barra atrás da nuca ou inclinar demais o tronco."],
   ["Remada baixa","Costas",3,"10–12","90 s","row","Sente-se com a coluna neutra. Puxe o pegador em direção ao abdômen aproximando as escápulas e retorne sem arredondar as costas.","Não transforme a remada em balanço do tronco."],
   ["Remada unilateral com halter","Costas",3,"10–12 cada lado","60–90 s","row","Apoie uma mão e um joelho no banco. Puxe o halter em direção ao quadril e desça até alongar o braço.","Mantenha o tronco estável e evite girar o corpo."],
-  ["Remada articulada","Costas",3,"10–12","90 s","back","Ajuste o banco e apoie o peito quando houver suporte. Puxe as alças até os cotovelos passarem levemente pelo tronco.","Priorize a contração das costas, sem encolher os ombros."],
+  ["Remada articulada","Costas",3,"10–12","90 s","back","Ajuste o banco e apoie o peito quando houver suporte. Puxe as alças até os cotovelos passarem levemente pelo tronco.","Priorize a contração das costas, sem encolher os ombros."]
   ["Rosca direta","Bíceps",3,"10–12","60 s","curl","Segure a barra com as palmas para frente. Flexione os cotovelos até aproximar a barra do peito e desça devagar.","Mantenha os cotovelos próximos ao corpo."],
   ["Rosca alternada","Bíceps",3,"10–12","60 s","curl","Com um halter em cada mão, flexione um braço de cada vez, girando a palma para cima durante a subida.","Evite jogar o ombro para frente ou balançar o tronco."],
   ["Rosca martelo","Bíceps",2,"12","60 s","curl","Segure os halteres com as palmas voltadas uma para a outra. Flexione os cotovelos e retorne lentamente.","Mantenha os punhos neutros durante todo o movimento."]
